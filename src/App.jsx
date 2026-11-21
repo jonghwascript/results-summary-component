@@ -1,5 +1,11 @@
 import scores from "../data.json";
 
+const icons = import.meta.glob("../assets/images/icon-*.svg", {
+  eager: true,
+  import: "default",
+  query: "?url",
+});
+
 function ResultPanel() {
   return (
     <section className="result-panel">
@@ -27,7 +33,7 @@ function SummaryPanel() {
             <li key={item.category}>
               <SummaryItem
                 category={item.category}
-                icon={item.icon}
+                icon={icons[`.${item.icon}`]}
                 score={item.score}
               />
             </li>
